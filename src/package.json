@@ -1,0 +1,10 @@
+{
+  "name": "github-token-server",
+  "version": "1.0.0",
+  "description": "Secure credential server for local automation",
+  "main": "server.js",
+  "type": "module",
+  "dependencies": {
+    "@octokit/auth-app": "^7.1.0"
+  }
+}
