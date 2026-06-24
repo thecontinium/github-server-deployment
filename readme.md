@@ -5,7 +5,7 @@ This repository handles user-space isolated deployments for the **GitHub Token S
 ## 🚀 Individual User Setup
 ```bash
 # 1. Pull down this module configuration directory
-git clone https://github.com/YOUR_GITHUB_USERNAME/github-token-server-deployment.git
+git clone https://github.com/thecontinium/github-token-server-deployment.git
 cd github-token-server-deployment
 
 # 2. Run the local setup installer
