@@ -3,18 +3,10 @@
 This repository handles user-space isolated deployments for the **GitHub Token Server**, utilizing centralized Node configurations via an administrator while isolating keys and daemons per-user.
 
 ## 🚀 Individual User Setup
-```bash
-# 1. Pull down this module configuration directory
-git clone https://github.com/YOUR_GITHUB_USERNAME/github-token-server-deployment.git
-cd github-token-server-deployment
-
-# 2. Run the local setup installer
-./install.sh
-```
 
 ### 🔑 Secure Keychain Configuration Required
 
-Before starting the background service, you must securely inject your GitHub App secrets into the native macOS Keychain. Run these 3 commands:
+Before running the local installation script, you must securely inject your GitHub App secrets into the native macOS Keychain. Run these 3 commands:
 
 1. **Store your App ID:**
    ```bash
@@ -32,6 +24,21 @@ Before starting the background service, you must securely inject your GitHub App
    ```
 
 > ⚠️ **IMPORTANT:** Once securely saved to the Keychain, remember to delete the physical .pem file from disk (`rm /path/to/your-key.pem`).
+
+---
+
+### 💻 Installation
+
+Once your credentials are secure in the Keychain, run the setup and bootstrap scripts:
+
+```bash
+# 1. Pull down this module configuration directory
+git clone https://github.com/YOUR_GITHUB_USERNAME/github-token-server-deployment.git
+cd github-token-server-deployment
+
+# 2. Run the local setup installer
+./install.sh
+```
 
 ---
 
