@@ -1,0 +1,8 @@
+{
+  "name": "github-token-server",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@octokit/auth-app": "^7.0.0"
+  }
+}
