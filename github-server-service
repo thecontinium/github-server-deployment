@@ -3,10 +3,33 @@ set -euo pipefail
 
 export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
 
+echo "🔄 Starting GitHub Token Server initialization..."
+
+# Pre-declare exports so they are in the environment, without masking exit codes
+export GH_APP_ID
+export GH_INSTALLATION_ID
+export GH_APP_PRIVATE_KEY
+
 # Extract secrets safely in-memory from native system layer
-export GH_APP_ID=$(security find-generic-password -a "github-app" -s "pi-app-id" -w)
-export GH_APP_PRIVATE_KEY=$(security find-generic-password -a "github-app" -s "pi-app-private-key-raw" -w)
+echo "🔐 Fetching Application ID from macOS Keychain..."
+GH_APP_ID=$(security find-generic-password -a "github-app" -s "pi-app-id" -w)
+
+echo "🔐 Fetching Installation ID from macOS Keychain..."
+GH_INSTALLATION_ID=$(security find-generic-password -a "github-app" -s "pi-installation-id" -w)
+
+echo "🔐 Fetching Hex Private Key from macOS Keychain..."
+GH_APP_PRIVATE_KEY=$(security find-generic-password -a "github-app" -s "pi-app-private-key-raw" -w)
+
+echo "✅ All secrets successfully loaded into environment."
 
 # Route context cleanly to the user-space share directory
-cd "$HOME/.local/share/github-token-server/src" || exit 1
+TARGET_DIR="$HOME/.local/share/github-token-server/src"
+echo "📂 Navigating to server directory: $TARGET_DIR"
+cd "$TARGET_DIR" || {
+  echo "❌ Failed to change directory to $TARGET_DIR"
+  exit 1
+}
+
+echo "🚀 Handoff to Node.js runtime..."
+echo "-----------------------------------------------"
 exec node server.js

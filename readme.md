@@ -13,7 +13,12 @@ Before running the local installation script, you must securely inject your GitH
    security add-generic-password -a "github-app" -s "pi-app-id" -w "YOUR_APP_ID"
    ```
 
-2. **Stream your raw PEM private key block into the secure vault:**
+1. **Store your Installation ID:**
+   ```bash
+   security add-generic-password -a "github-app" -s "pi-installation-id" -w "YOUR_INSTALLATION_ID"
+   ```
+. 
+3. **Stream your raw PEM private key block into the secure vault:**
    ```bash
   security add-generic-password -a "github-app" -s "pi-app-private-key-raw" -w "$(cat /path/to/your-key.pem)"
    ```
