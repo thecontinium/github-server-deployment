@@ -15,7 +15,7 @@ Before running the local installation script, you must securely inject your GitH
 
 2. **Stream your raw PEM private key block into the secure vault:**
    ```bash
-   security add-generic-password -a "github-app" -s "pi-app-private-key-raw" -w - < /path/to/your-key.pem
+  security add-generic-password -a "github-app" -s "pi-app-private-key-raw" -w "$(cat /path/to/your-key.pem)"
    ```
 
 > ⚠️ **IMPORTANT:** Once securely saved to the Keychain, remember to delete the physical .pem file from disk (`rm /path/to/your-key.pem`).

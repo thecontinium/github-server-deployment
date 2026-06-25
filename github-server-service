@@ -5,7 +5,7 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
 
 # Extract secrets safely in-memory from native system layer
 export GH_APP_ID=$(security find-generic-password -a "github-app" -s "pi-app-id" -w)
-export GH_APP_PRIVATE_KEY=$(cat <(security find-generic-password -a "github-app" -s "pi-app-private-key-raw" -w))
+export GH_APP_PRIVATE_KEY=$(security find-generic-password -a "github-app" -s "pi-app-private-key-raw" -w)
 
 # Route context cleanly to the user-space share directory
 cd "$HOME/.local/share/github-token-server/src" || exit 1
